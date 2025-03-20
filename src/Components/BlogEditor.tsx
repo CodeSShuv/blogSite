@@ -6,6 +6,7 @@ const BlogEditor = () => {
   const {setBlogs} = useContext(blogContext)
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [blogPrivacy , setBlogPrivacy] = useState<string>("Public");
 
   const handleSubmit = async(e:any) => {
     e.preventDefault();
@@ -13,7 +14,9 @@ const BlogEditor = () => {
     const model ={
       title:title,
       content:content,
+      visibility:blogPrivacy
     }
+   
     try{
       const  res= await axios.post("http://localhost:8080/blogs/publish", model, {withCredentials:true});
       setBlogs((prev:Blog[])=>[...prev,{title:title,content:content}]);
@@ -29,6 +32,11 @@ const BlogEditor = () => {
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Create a Blog Post</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
+      <select value={blogPrivacy}  onChange={(event)=> {setBlogPrivacy(event.target.value);}}name="privacy" id="access">
+  <option value="Public">Public</option>
+  <option value="Private">Private</option>
+  
+</select>
         <div>
           <label className="block font-semibold">Blog Title:</label>
           <input

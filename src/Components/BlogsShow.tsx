@@ -2,24 +2,29 @@
 import blogContext, { Blog } from '../Context/blogContext'
 import Card from './Card'
 import axios from 'axios'
-import { useContext, useEffect } from 'react'
+import  { useContext, useEffect } from 'react'
 
-const BlogsShow = () => {
+const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
   const { blogs, setBlogs } = useContext<{ blogs: Blog[] | [], setBlogs: Function }>(blogContext);
 
 
 
   // for fetching the notes as soon as the component is rendered
+  
   const fetchBlogs = async () => {
-    const res = await axios.get("http://localhost:8080/blogs", { withCredentials: true });
+    const res = publicFeed? await axios.get("http://localhost:8080/blogs/feed", { withCredentials: true }):await axios.get("http://localhost:8080/blogs", { withCredentials: true })
+    
 
     if (blogs.length != res.data.blogs) {
 
 
       try {
 
-        if (!res.data.blogs) return
+        if (!res.data.blogs){
+          setBlogs([])
+          return
+        }
         setBlogs(res.data.blogs)
 
       } catch (err) {
@@ -28,9 +33,10 @@ const BlogsShow = () => {
     }
 
   }
+
   const deleteBlog = async (id: string) => {
     if (id != "defaultKey") {
-      console.log(id)
+ 
       try {
         await axios.delete(`http://localhost:8080/blogs/items/${id}`, { withCredentials: true });
       } catch (error) {
@@ -49,16 +55,22 @@ const BlogsShow = () => {
     fetchBlogs()
   }, [])
   return (
-    <div>
+    <div style={style.blogsCards} className= "blogsCardContainer">
 
       {blogs.length != 0 ? blogs.map((element, index) => {
         if (element.title === "" || element.content === "") return
-        return <Card deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} index={index} />
+        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} index={index} visibility= {element.visibility}  />
       }) : <>
-        <Card deleteBlog={deleteBlog} key={"defaultKey"} id={"defaultKey"} title={"no blogs yet"} content={"Create a blog... express your thought."} index={-1} />
+        <Card publicFeed={publicFeed} deleteBlog={deleteBlog} key={"defaultKey"} id={"defaultKey"} title={"no blogs yet"} content={"Create a blog... express your thought."} index={-1} />
       </>}
     </div>
   )
 }
 
 export default BlogsShow
+
+const style = {
+  blogsCards :{
+    padding: "4rem"
+  }
+}

@@ -14,6 +14,7 @@ import axios from "axios";
 
 import Cookies from 'js-cookie';
 import "./App.css"
+import Feed from "./Components/Feed";
 const App = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(true);
   const { user, setUser } = useContext(userContext);
@@ -57,7 +58,8 @@ const App = () => {
         //catching the problem
       } catch (error: any) {
         if (error.status = 404) {
-          alert("User Not found")
+          alert("User Not found");
+          Cookies.remove('token');
         }
         else if (error.status === 401) {
           Cookies.remove('token'); // this is a special error that is caused by expired token. so the token is removed.
@@ -108,7 +110,8 @@ const App = () => {
           <Navbar user={user} logOut={logOut} />
           <Routes>
 
-            {user?.userId ? <><Route path="/blogs-show" element={<BlogsShow />} /><Route path="/blog-editor" element={<BlogEditor />} /></> : <>
+            {user?.userId ? <><Route path="/blogs-show" element={<BlogsShow key={0} publicFeed={false} />} /><Route path="/blog-editor" element={<BlogEditor />} />
+            <Route path="/blog-feed" element={<Feed  publicFeed = {true}/>}/></> : <>
               <Route path="/login" element={<Login navigate={navigate} />} />
               <Route path="/Signup" element={<Signup />} /></>}
 

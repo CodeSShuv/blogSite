@@ -1,5 +1,5 @@
 
-const Card = ({ title, content, index, deleteBlog ,id}: { title: string, content: string, index: number, deleteBlog:any,id:string   }) => {
+const Card = ({ title, content,visibility, index, deleteBlog ,id, publicFeed, userName}: { title: string,visibility?:string, content: string, index: number, deleteBlog?:any,id:string, publicFeed:boolean, userName?:string   }) => {
   return (
     <>
 
@@ -8,12 +8,13 @@ const Card = ({ title, content, index, deleteBlog ,id}: { title: string, content
       <div className="card">
         <div className="card-header flex justify-between">
           <div className="left">
-
-          Blog : {index + 1}
+          <><span>{userName}</span></>
+{!publicFeed? (<span> {visibility}</span>):' '}
+          
           </div>
-          <div className="rigt">
+          {!publicFeed? <div className="rigt">
             <button onClick  = {()=>{deleteBlog(id)}} >Delete</button>
-          </div>
+          </div>:<div></div>}
         </div>
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
