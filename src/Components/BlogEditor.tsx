@@ -24,7 +24,7 @@ const BlogEditor = () => {
 
     }catch(err:any){
       alert("There was an error while posting the blog.")
-    }
+    }    
 
   };
 

@@ -23,7 +23,7 @@ const Feed = ({publicFeed}:{publicFeed:boolean}) => {
                 setBlogs([])
                 return
             }
-            setBlogs(res.data.blogs)
+            setBlogs(res.data.blogs.reverse())
     
           } catch (err) {
             console.log(err)
@@ -34,16 +34,16 @@ const Feed = ({publicFeed}:{publicFeed:boolean}) => {
       useEffect(()=>{
         fetchBlogs()
       },[])
-      console.log(blogs[0]?.userId.firstName + blogs[0]?.userId.lastName)
+
   return (
     <>
     <div style={style.blogsCards} className= "blogsCardContainer">
 
 {blogs.length != 0 ? blogs.map((element, index) => {
   if (element.title === "" || element.content === "") return
-  return <Card publicFeed={publicFeed} key={element._id} id={element._id} title={element.title} content={element.content} index={index}  userName ={element?.userId?.firstName?.charAt(0).toUpperCase() + element?.userId?.firstName?.slice(1) +' '  +element?.userId?.lastName?.charAt(0).toUpperCase() + element?.userId?.lastName?.slice(1)} />
+  return <Card publicFeed={publicFeed} key={element._id} id={element._id} title={element.title} content={element.content}   userName ={element?.userId?.firstName?.charAt(0).toUpperCase() + element?.userId?.firstName?.slice(1) +' '  +element?.userId?.lastName?.charAt(0).toUpperCase() + element?.userId?.lastName?.slice(1)} />
 }) : <>
-  <Card publicFeed={publicFeed}  key={"defaultKey"} id={"defaultKey"} title={"no blogs yet"} content={"Create a blog... express your thought."} index={-1} />
+  <Card publicFeed={publicFeed}  key={"defaultKey"} id={"defaultKey"} title={"no blogs yet"} content={"Create a blog... express your thought."}  />
 </>}
 </div>
     </>
@@ -53,6 +53,7 @@ const Feed = ({publicFeed}:{publicFeed:boolean}) => {
 export default Feed
 const style = {
     blogsCards :{
-      padding: "4rem"
+      padding: "4rem",
+      
     }
   }

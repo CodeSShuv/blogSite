@@ -1,23 +1,36 @@
 @import "tailwindcss";
+:root{
+    --primarydark: #131313;
+    --secondaryDark : #252525;
+}
+body{
+    background-color: var(--secondaryDark);
+    overflow-x:hidden ;
+}
 .links, .btn-nav:hover{
     text-decoration: none;
     color: white;
-    padding: .5rem;
+    padding: .4rem;
     border-radius: 1rem;
     display: inline-block;
-    width: 8rem;
+    /* width: 8rem; */
     text-align: center;
     font-weight: 400;
-
+    width: 3rem;
 }
 
-.links:hover, .btn-nav{
+.links:hover, .btn-nav:hover{
     background-color: rgba(216, 216, 216, 0.26);
-    width: 8rem;
-    padding: .5rem;
+    
+}
+.btn-nav{
+    background-color: transparent;
+    color: wheat;
+    width: 3rem;
+    padding: .4rem;
 }
 .navbar{
-    background-color: rgba(0, 27, 85, 0.945);
+    background-color: var(--primarydark);
     color: white;
 }
 .logo{

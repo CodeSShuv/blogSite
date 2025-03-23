@@ -25,6 +25,8 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
           setBlogs([])
           return
         }
+        res.data.blogs?.reverse()
+        
         setBlogs(res.data.blogs)
 
       } catch (err) {
@@ -57,11 +59,11 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
   return (
     <div style={style.blogsCards} className= "blogsCardContainer">
 
-      {blogs.length != 0 ? blogs.map((element, index) => {
+      {blogs.length != 0 ? blogs.map((element) => {
         if (element.title === "" || element.content === "") return
-        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} index={index} visibility= {element.visibility}  />
+        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility}  />
       }) : <>
-        <Card publicFeed={publicFeed} deleteBlog={deleteBlog} key={"defaultKey"} id={"defaultKey"} title={"no blogs yet"} content={"Create a blog... express your thought."} index={-1} />
+        <Card publicFeed={publicFeed} deleteBlog={deleteBlog} key={"defaultKey"} id={"defaultKey"} title={"no blogs yet"} content={"Create a blog... express your thought."}  />
       </>}
     </div>
   )

@@ -1,5 +1,7 @@
 import { User } from '../Context/States/UserState'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShareFromSquare, faCompass, faUser, faPenToSquare }  from '@fortawesome/free-solid-svg-icons'
 const Navbar = ({user,logOut}:{user:User | null, logOut:any }) => {
   return (
     <>
@@ -7,18 +9,21 @@ const Navbar = ({user,logOut}:{user:User | null, logOut:any }) => {
     <div className="logo">
       Blogs
     </div>
-    <div className="centerLinks flex justify-center items-center gap-2">
+    <div className="centerLinks flex justify-center items-center gap-4">
       {/* <Link className='decoration-0' to={"/feed"}> Feed</Link> */}
       
    {user?.userId != undefined? (
     <>
-    <Link to={"/blog-feed"} className='no-underline links'>Blog Feed</Link>
-    <Link className='no-underline links' to={"/blogs-show"}> MyBlogs</Link>
-    <Link to={"/blog-editor" } className='no-underline links'> Blog Editor</Link>
+    <Link to={"/blog-feed"} className='no-underline links' title='Feed '>    <FontAwesomeIcon icon={faCompass} size='2xl' /></Link>
+    <Link to={"/blog-editor" } className='no-underline links' title='editor'> <FontAwesomeIcon icon={faPenToSquare} size='xl' /></Link>
+    <Link className='no-underline links' to={"/blogs-show"} title='profile'> <FontAwesomeIcon icon={faUser}  size='xl' /></Link>
     
-    <button className='btn btn-nav' onClick={logOut}>Logout</button>
-     </>):<><Link to={"/login"} className='no-underline links'> Login</Link>
-    <Link to={"/signup"} className='no-underline links'> Signup</Link> </>}
+    <button className='btn btn-nav' onClick={logOut}>
+    <FontAwesomeIcon icon={faShareFromSquare} size='xl' />
+
+    </button>
+     </>):<><Link to={"/login"} id="" className='no-underline links LS-btn'> Login</Link>
+    <Link to={"/signup"} className='no-underline links LS-btn'> Signup</Link> </>}
     
     </div>
     

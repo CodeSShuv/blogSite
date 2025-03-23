@@ -1,6 +1,6 @@
-import "./App.css";
-import BlogEditor from "./Components/BlogEditor";
+
 import BlogsShow from "./Components/BlogsShow";
+import BlogEditor from "./Components/BlogEditor";
 import Navbar from "./Components/Navbar";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
@@ -13,7 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 import Cookies from 'js-cookie';
-import "./App.css"
+// import "./App.css"
 import Feed from "./Components/Feed";
 const App = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(true);
@@ -50,7 +50,7 @@ const App = () => {
         );
 
         if (location.pathname === "/login") {
-          navigate("/blogs-show")
+          navigate("/blog-feed")
 
         }
 
@@ -92,7 +92,7 @@ const App = () => {
     if (user?.userId != undefined) {
       if (location.pathname === "/login") {
 
-        navigate("/blogs-show");
+        navigate("/blog-feed");
       }
       // fetchBlogs()
     }
@@ -112,7 +112,7 @@ const App = () => {
 
             {user?.userId ? <><Route path="/blogs-show" element={<BlogsShow key={0} publicFeed={false} />} /><Route path="/blog-editor" element={<BlogEditor />} />
             <Route path="/blog-feed" element={<Feed  publicFeed = {true}/>}/></> : <>
-              <Route path="/login" element={<Login navigate={navigate} />} />
+              <Route path="/login" element={<Login  />} />
               <Route path="/Signup" element={<Signup />} /></>}
 
 

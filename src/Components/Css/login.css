@@ -1,0 +1,59 @@
+@import url("../../App.css");
+
+.Login{
+    height: 90vh;
+    display: flex;
+
+    justify-content: center;
+    align-items: center ;
+}
+.login-card h2{
+    color: gainsboro;
+}
+.login-card{
+    background-color: var(--primarydark);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 2rem;
+    /* box-shadow: 1px 1px 10px 15px rgba(144, 144, 144, 0.092); */
+    border: 1px solid  rgba(128, 128, 128, 0.276);
+    border-radius: 3rem;
+}
+.login-card input{
+    width: 25rem;
+    font-size: 1.4rem;
+    padding:  .5rem 1.3rem .5rem 1.3rem ;
+    outline: 1px solid rgba(21, 21, 21, 0.14);
+}
+.login-card input:focus{
+    outline: none;
+}
+.input-box{
+    background-color: whitesmoke;
+    
+}
+.input-box:focus-within{
+    outline: 1px solid rgb(17, 17, 17);
+    transition-property: all;
+    transition-duration: .5s;
+    
+}
+.btn-holder button{
+    width: 25rem;
+    font-size: 1.3rem;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+}
+.btn-holder button:hover{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+}
+.erroBox{
+    margin: -1rem;
+    color: red;
+}

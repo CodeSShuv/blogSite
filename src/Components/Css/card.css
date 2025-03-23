@@ -1,0 +1,31 @@
+@import url("../../App.css");
+.customCardDesign{
+    background-color: var(--primarydark);
+}
+.card-header{
+    background-color: var(--primarydark);
+    color: white;
+}
+.card-body{
+    background-color: var(--secondaryDark);
+    color: gainsboro;
+}
+.card-title{
+    font-size: 2rem;
+    /* color: rgb(72, 16, 16); */
+}
+.like{
+    /* background-color: red; */
+    display: inline-block;
+}
+.likesCount{
+    color: gainsboro;
+}
+.commentCount{
+    color: gainsboro;
+} 
+.postFooter{
+    display: flex;
+    gap: 1rem;
+    padding: 0 .4rem 0 .4rem;
+}

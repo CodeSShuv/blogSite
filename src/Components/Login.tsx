@@ -1,12 +1,13 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import loginContext from "../Context/loginContext"
 import userContext from "../Context/userContext";
 import axios from "axios";
-
-const Login = (navigate: any) => {
+import './Css/login.css'
+import image from "../assets/loginimage.png"
+const Login = () => {
   const { loginInput, setLoginInput } = useContext(loginContext);
   const { setUser } = useContext(userContext);
-
+  const [error, setError] = useState("");
   const typing = (e: any) => {
     switch (e.target.name) {
       case "email":
@@ -18,9 +19,11 @@ const Login = (navigate: any) => {
     }
   }
   const login = async () => {
-    if (!loginInput.email && !loginInput.password) return alert("Fields are empty")
+    if (!loginInput.email || !loginInput.password) return setError("Fields cannot be empty");
     try {
+      if (error.length !== 0) setError("")
       const res = await axios.post("http://localhost:8080/auth/login", loginInput, { withCredentials: true });
+      console.log(res)
 
       await setUser({
         userId: res.data.userId,
@@ -29,9 +32,10 @@ const Login = (navigate: any) => {
         email: res.data.email
       });
       setLoginInput({ email: "", password: "" })
-      
+
     } catch (error: any) {
-      console.log("error")
+
+      alert(error.message)
     }
 
 
@@ -39,20 +43,33 @@ const Login = (navigate: any) => {
 
   return (
     <>
-      <div className="Login p-3">
-        <div className="Login-heading">
-          <h2>Login</h2>
-        </div>
+      <div className="Login">
+      <div className="image-container">
+        <img src={image} alt="" />
+      </div>
+      {/* ------card design */}
+        <div className="login-card">
 
-        <div className="input-group mt-2 p-1">
-          {/* <span className="input-group-text">Email and Password</span> */}
-          <input type="email" aria-label="First name" placeholder="Email" onChange={typing} value={loginInput.email} name="email" className="form-control" />
-          <input type="password" aria-label="Last name" name="password" onChange={typing} value={loginInput.password} placeholder="Password" className="form-control" />
+          <div className="Login-heading">
+            <h2>Login</h2>
+          </div>
+
+          <div className="input-box">
+            {/* <span className="input-group-text">Email and Password</span> */}
+            <input type="email" aria-label="First name" placeholder="Email" onChange={typing} value={loginInput.email} name="email" className="" />
+          </div>
+          <span className="erroBox">{error}</span>
+          <div className="input-box">
+
+            <input type="password" aria-label="Last name" name="password" onChange={typing} value={loginInput.password} placeholder="Password" className="" />
+          </div>
+          <div className="btn-holder">
+            <button type="submit" onClick={login} className="btn mb-3 mt-2">Login</button>
+          </div>
         </div>
-        <div className="col-auto p-1">
-          <button type="submit" onClick={login} className="btn btn-primary mb-3 mt-2">Login</button>
-        </div>
-      </div></>
+      
+      </div>
+    </>
   )
 }
 
