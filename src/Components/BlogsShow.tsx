@@ -1,15 +1,34 @@
 
 import blogContext, { Blog } from '../Context/blogContext'
+import BlogEditor from './BlogEditor'
 import Card from './Card'
 import axios from 'axios'
-import  { useContext, useEffect } from 'react'
+import  { useContext, useEffect,useState } from 'react'
 
 const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
   const { blogs, setBlogs } = useContext<{ blogs: Blog[] | [], setBlogs: Function }>(blogContext);
+  const [blogContent, setBlogContent] = useState({
+    title:"",
+    content:"",
+    privacy:"",
+    blogId:""
+  });
+  //Helps to checks if the person is editing the content or not.
+  const [isEditing, setIsEditing] = useState(false);
 
-
-
+  //for editing the user's own blogs.
+  const editBlog = (title:string ,content:string,privacy:string,id:string)=>{
+    console.log(id)
+    setBlogContent({
+      title:title ,
+      content:content,
+      privacy:privacy,
+       blogId:id
+    })
+    setIsEditing(true);
+  }
+  
   // for fetching the notes as soon as the component is rendered
   
   const fetchBlogs = async () => {
@@ -57,15 +76,26 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
     fetchBlogs()
   }, [])
   return (
-    <div style={style.blogsCards} className= "blogsCardContainer">
+    <>
+   {isEditing? <BlogEditor blogTitle={blogContent.title}blogContent={blogContent.content}visibility = {blogContent.privacy} isEditing = {isEditing} blogId={blogContent.blogId} setIsEditing = {setIsEditing}/>:<></>}
+   {publicFeed? <div style={style.blogsCards} className= "blogsCardContainer">
 
       {blogs.length != 0 ? blogs.map((element) => {
         if (element.title === "" || element.content === "") return
-        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility}  />
+        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog}  />
       }) : <>
-        <Card publicFeed={publicFeed} deleteBlog={deleteBlog} key={"defaultKey"} id={"defaultKey"} title={"no blogs yet"} content={"Create a blog... express your thought."}  />
+       <p>No Blogs yet..</p>
       </>}
-    </div>
+    </div>:(!isEditing?<div style={style.blogsCards} className= "blogsCardContainer">
+
+{blogs.length != 0 ? blogs.map((element) => {
+  if (element.title === "" || element.content === "") return
+  return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog}  />
+}) : <>
+ <p>No Blogs yet..</p>
+</>}
+</div>:"")  }
+      </>
   )
 }
 

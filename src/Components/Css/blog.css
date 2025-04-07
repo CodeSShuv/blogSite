@@ -1,0 +1,26 @@
+@import url("../../App.css");
+.blogContainer{
+    padding: 2rem;
+}
+
+.author{
+    color: grey;
+}
+.blog-heading{
+    margin-top:1rem ;
+    text-align: center;
+    padding: .5rem;
+}
+.blog-content{
+    font-size: 1.2rem;
+}
+.blog-footer{
+    display: flex   ;
+    background-color: var(--secondaryColor);
+    align-items: center;
+    gap: 1.2rem;
+    padding-left: 1rem;
+}
+.like button{
+    cursor: pointer;
+}

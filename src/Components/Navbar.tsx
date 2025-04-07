@@ -14,9 +14,9 @@ const Navbar = ({user,logOut}:{user:User | null, logOut:any }) => {
       
    {user?.userId != undefined? (
     <>
-    <Link to={"/blog-feed"} className='no-underline links' title='Feed '>    <FontAwesomeIcon icon={faCompass} size='2xl' /></Link>
+    <Link to={"/feed"} className='no-underline links' title='Feed '>    <FontAwesomeIcon icon={faCompass} size='2xl' /></Link>
     <Link to={"/blog-editor" } className='no-underline links' title='editor'> <FontAwesomeIcon icon={faPenToSquare} size='xl' /></Link>
-    <Link className='no-underline links' to={"/blogs-show"} title='profile'> <FontAwesomeIcon icon={faUser}  size='xl' /></Link>
+    <Link className='no-underline links' to={"/profile"} title='profile'> <FontAwesomeIcon icon={faUser}  size='xl' /></Link>
     
     <button className='btn btn-nav' onClick={logOut}>
     <FontAwesomeIcon icon={faShareFromSquare} size='xl' />

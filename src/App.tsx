@@ -1,4 +1,4 @@
-
+import "./App.css"
 import BlogsShow from "./Components/BlogsShow";
 import BlogEditor from "./Components/BlogEditor";
 import Navbar from "./Components/Navbar";
@@ -13,14 +13,17 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 import Cookies from 'js-cookie';
-// import "./App.css"
+
 import Feed from "./Components/Feed";
+import Blog from "./Components/Blog";
+import Profile from "./Components/Profile";
 const App = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(true);
   const { user, setUser } = useContext(userContext);
   const { setBlogs } = useContext(blogContext);
   const navigate = useNavigate();
   const location = useLocation();
+//for post Only. Might want to use it by maintaining a seperatefile in the future but this time its fine. 
 
 
   // This is used to fetch the blogs from the  server. This is done after the signin process is completed. 
@@ -90,9 +93,9 @@ const App = () => {
     // if user is logged in the blogs show if url is given /login
 
     if (user?.userId != undefined) {
-      if (location.pathname === "/login") {
+      if (location.pathname === "/login" || location.pathname === "/") {
 
-        navigate("/blog-feed");
+        navigate("/feed");
       }
       // fetchBlogs()
     }
@@ -110,10 +113,13 @@ const App = () => {
           <Navbar user={user} logOut={logOut} />
           <Routes>
 
-            {user?.userId ? <><Route path="/blogs-show" element={<BlogsShow key={0} publicFeed={false} />} /><Route path="/blog-editor" element={<BlogEditor />} />
-            <Route path="/blog-feed" element={<Feed  publicFeed = {true}/>}/></> : <>
+            {user?.userId ? <><Route path="/profile" element={<Profile key={0}  />} /><Route path="/blog-editor" element={<BlogEditor />} />
+            <Route path="/feed" element={<Feed key={1}  publicFeed = {true}/>}/></> : <>
               <Route path="/login" element={<Login  />} />
-              <Route path="/Signup" element={<Signup />} /></>}
+              <Route path="/Signup" element={<Signup />} />
+              
+              </>}
+              <Route path = "/blog"element={<Blog/>}/>
 
 
           </Routes>

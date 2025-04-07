@@ -1,18 +1,23 @@
 @import url("../../App.css");
 .customCardDesign{
-    background-color: var(--primarydark);
+    /* background-color: var(--extraStuffColor); */
+    outline: .5px solid gainsboro;
 }
 .card-header{
-    background-color: var(--primarydark);
-    color: white;
+    background-color: var(--primaryColor);
+    /* color: var(--secondaryColor); */
 }
 .card-body{
     background-color: var(--secondaryDark);
-    color: gainsboro;
+    color: black;
 }
 .card-title{
     font-size: 2rem;
     /* color: rgb(72, 16, 16); */
+}
+.card-title a{
+    color: var(--linkColor);
+   
 }
 .like{
     /* background-color: red; */
@@ -28,4 +33,8 @@
     display: flex;
     gap: 1rem;
     padding: 0 .4rem 0 .4rem;
+    background-color: var(--secondaryColor);
+}
+.right button {
+    margin-left: 1rem;
 }

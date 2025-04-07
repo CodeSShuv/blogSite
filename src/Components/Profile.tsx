@@ -1,18 +1,27 @@
-import React from 'react'
+import React,{useEffect, useContext} from 'react'
+import userContext from '../Context/userContext'
 
-const Profile = () => {
+import "./Css/profile.css"
+import BlogsShow from './BlogsShow';
+const Profile:React.FC = () => {
+  const {user, setUser} = useContext(userContext);
   return (
-    <div>
-        <p>Personal  Information</p>
+    <>
+    <div className='ProfileInfo'>
+        <p >Personal  Information</p>
         <div className="infoContainer">
-            <div className="firstName">
-                FirstName : Shuvam
+            <div className="fullName">
+                 {user?.firstName+ " "+ user
+                 ?.lastName}
             </div>
-            <div className="lastName">
-                Gautam
+            <div className="emailContainer">
+                {user?.email}
             </div>
         </div>
+        <hr />
     </div>
+    <BlogsShow key={3} publicFeed={false}/>
+    </>
   )
 }
 

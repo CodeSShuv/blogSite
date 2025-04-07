@@ -1,0 +1,31 @@
+@import url("../../App.css");
+.blogEditor{
+    display: flex;
+    background-color: var(--primaryColor)   ;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    color: black;
+    padding: 2rem;
+}
+select{
+    border:1px solid var(--primaryColor );
+    padding: .7rem
+}
+option{
+    background-color: var(--secondaryColor);
+    color : black
+}
+#inputTitle{
+    width: 65rem;
+    color: black;
+}
+#inputContent{
+    width: 65rem;
+    height: 20rem;
+    resize: none;
+    color: black;
+}
+#publish-btn{
+    background-color: var(--secondaryColor);
+}

@@ -8,7 +8,7 @@
     align-items: center ;
 }
 .login-card h2{
-    color: gainsboro;
+    color: var(--secondaryColor);
 }
 .login-card{
     background-color: var(--primarydark);
@@ -44,14 +44,14 @@
 .btn-holder button{
     width: 25rem;
     font-size: 1.3rem;
-    background-color: black;
-    border: 1px solid black;
+    background-color: var(--extraStuffColor);
+    border: 1px solid var(--extraStuffColor);
     color: white;
 }
 .btn-holder button:hover{
     background-color: transparent;
-    color: black;
-    border: 1px solid black;
+    color: var(--extraStuffColor);
+    border: 1px solid var(--extraStuffColor);
 }
 .erroBox{
     margin: -1rem;
