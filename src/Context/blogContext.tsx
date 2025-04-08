@@ -9,6 +9,7 @@ export interface Blog{
     title: string,
     content: string,
     visibility: string,
+    likesCount:number,
     createdAt: Date,
     updatedAt: Date,
 }

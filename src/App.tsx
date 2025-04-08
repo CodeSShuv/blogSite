@@ -104,7 +104,6 @@ const App = () => {
 
   return (
     <>
-
       {!isLoading && <LoginState>
 
         <SignupState>

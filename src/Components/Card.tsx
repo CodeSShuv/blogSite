@@ -5,7 +5,7 @@ import { faHeart,faComment,faTrashCan,faPenToSquare }  from '@fortawesome/free-s
 
 
 
-const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName , editBlog}: { title: string,visibility?:string, content: string, deleteBlog?:any,id:string, publicFeed:boolean, userName?:string, editBlog:any   }) => {
+const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName , editBlog,likesCount}: { title: string,visibility?:string, content: string, deleteBlog?:any,id:string, publicFeed:boolean, userName?:string, editBlog?:any,likesCount?:number   }) => {
 
   return (
     <>   
@@ -46,7 +46,7 @@ const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName
           <div className="like">
 
           <FontAwesomeIcon icon={faHeart} style={{color: "#ffff",}} />
-          <span className="likesCount">120</span>
+          <span className="likesCount">{likesCount}</span>
           </div>
           <div className="comment">
           <FontAwesomeIcon icon={faComment} style={{color: "#ffff",}} />

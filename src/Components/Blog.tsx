@@ -17,9 +17,9 @@ const Blog: React.FunctionComponent = () => {
     const [like, setLike] = useState(false);
 
     const getLikeList = async () => {
-        console.log("fetching in getLikeList")
+        // console.log("fetching in getLikeList")
         if (!blog.blogId) return
-        console.log('...')
+        // console.log('...')
         const likeRes = await axios.get(`http://localhost:8080/like/get-list/${blog.blogId}`, { withCredentials: true });
         setLikedList(likeRes.data.likes);
         likeRes.data.likes.map((e:any)=>{
@@ -46,7 +46,7 @@ const Blog: React.FunctionComponent = () => {
     const handelLike = async (e: any) => {
         try {
             await axios.put(`http://localhost:8080/like/${blog.blogId}`, {}, { withCredentials: true });
-            console.log("Liked");
+            // console.log("Liked");
             
             if (!like) {
 
