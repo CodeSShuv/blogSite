@@ -2,12 +2,14 @@ import React, { useEffect, useState, useContext } from "react"
 import axios from "axios"
 import "./Css/blog.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faComment } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faComment } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
 import userContext from "../Context/userContext"
 
 const Blog: React.FunctionComponent = () => {
     const [blog, setBlog] = useState({ blogId: null, title: null, content: null, firstName: null, lastName: null });
-    const { user } = useContext(userContext)
+    const { user } = useContext(userContext);
+
     const [commentList, setCommentList] = useState([]);
 
     ///This liked list store all the users that have liked a blog. This  is also used for showing the number of likes a blog has got by using its size. 
@@ -15,7 +17,7 @@ const Blog: React.FunctionComponent = () => {
     const [likedList, setLikedList] = useState<any>([]);
     const [likeCount, setLikeCount] = useState(0);
     const [like, setLike] = useState(false);
-
+    const [comment,setComment] = useState(true);
     const getLikeList = async () => {
         // console.log("fetching in getLikeList")
         if (!blog.blogId) return
@@ -131,11 +133,13 @@ const Blog: React.FunctionComponent = () => {
             <div className="blog-content">
                 <p className=''>{blog?.content}</p>
             </div>
+
+            {/* <footer></footer> */}
             <div className="blog-footer">
                 <div className="like">
                     <button onClick={handelLike}>
 
-                        <FontAwesomeIcon icon={faHeart} style={{ color: `${like ? "red" : "#ffff"}`, }} />
+                        <FontAwesomeIcon icon={like ? solidHeart : faHeart} size="xl" style={{ color: `#ea445a`, }} />
 
                     </button>
                     <span className="likesCount">{likeCount}</span>
@@ -143,9 +147,19 @@ const Blog: React.FunctionComponent = () => {
                 <div className="comment">
                     <button >
 
-                        <FontAwesomeIcon icon={faComment} style={{ color: "#ffff", }} />
+                        <FontAwesomeIcon icon={faComment} size="xl" style={{ color: "#ea445a", }} />
                     </button>
                     <span className="commentCount">120</span>
+                </div>
+                
+            </div>
+            <div className="commentShow">
+                <div className="viweComment">
+
+                </div>
+                <div className="commentInputBox">
+                  <textarea name="" id="" placeholder="Add a comment"></textarea>
+                  <button className= "btn commetBtn">Comment</button>
                 </div>
             </div>
         </div>

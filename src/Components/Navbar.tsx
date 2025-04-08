@@ -7,7 +7,8 @@ const Navbar = ({user,logOut}:{user:User | null, logOut:any }) => {
     <>
   <nav className='flex justify-between items-center p-2 navbar'>
     <div className="logo">
-      Blogs
+ 
+    writeScape.
     </div>
     <div className="centerLinks flex justify-center items-center gap-4">
       {/* <Link className='decoration-0' to={"/feed"}> Feed</Link> */}
@@ -22,8 +23,8 @@ const Navbar = ({user,logOut}:{user:User | null, logOut:any }) => {
     <FontAwesomeIcon icon={faShareFromSquare} size='xl' />
 
     </button>
-     </>):<><Link to={"/login"} id="" className='no-underline links LS-btn'> Login</Link>
-    <Link to={"/signup"} className='no-underline links LS-btn'> Signup</Link> </>}
+     </>):<><Link to={"/login"} id="login-btn" className='no-underline links LS-btn'> Login</Link>
+    <Link to={"/signup"} id="signup-btn" className='no-underline links LS-btn'> Signup</Link> </>}
     
     </div>
     

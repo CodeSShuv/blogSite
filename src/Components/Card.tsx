@@ -1,18 +1,18 @@
 import "./Css/card.css"
 import{Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart,faComment,faTrashCan,faPenToSquare }  from '@fortawesome/free-solid-svg-icons'
+import { faHeart,faComment,faTrashCan,faPenToSquare }  from '@fortawesome/free-regular-svg-icons'
 
 
 
-const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName , editBlog,likesCount}: { title: string,visibility?:string, content: string, deleteBlog?:any,id:string, publicFeed:boolean, userName?:string, editBlog?:any,likesCount?:number   }) => {
+const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName , editBlog,likesCount,commentsCount}: { title: string,visibility?:string, content: string, deleteBlog?:any,id:string, publicFeed:boolean, userName?:string, editBlog?:any,likesCount?:number, commentsCount:number   }) => {
 
   return (
     <>   
 
 
 
-      <div className="card mb-4 customCardDesign">
+      <div className="card customCardDesign">
         <div className="card-header flex justify-between">
           <div className="left">
           <><span>{userName}</span></>
@@ -20,15 +20,15 @@ const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName
           
           </div>
           {!publicFeed? <div className="right">
-            <button title="Edit" onClick={()=>{
+            <button className="topRightBtn" title="Edit" onClick={()=>{
               editBlog(title,content,visibility,id);
               
             }}>
             <FontAwesomeIcon icon={faPenToSquare} />
             </button>
-            <button title="delete" onClick  = {()=>{deleteBlog(id)}} >
+            <button  title="delete" onClick  = {()=>{deleteBlog(id)}} >
             
-            <FontAwesomeIcon icon={faTrashCan} />
+            <FontAwesomeIcon  icon={faTrashCan} />
             </button>
           </div>:<div></div>}
         </div>
@@ -45,12 +45,12 @@ const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName
         <div className="postFooter">
           <div className="like">
 
-          <FontAwesomeIcon icon={faHeart} style={{color: "#ffff",}} />
+          <FontAwesomeIcon icon={faHeart} style={{color: "#ea445a",}} />
           <span className="likesCount">{likesCount}</span>
           </div>
           <div className="comment">
-          <FontAwesomeIcon icon={faComment} style={{color: "#ffff",}} />
-          <span className="commentCount">120</span>
+          <FontAwesomeIcon icon={faComment} style={{color: "#ea445a",}} />
+          <span className="commentCount">{commentsCount}</span>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ export interface Blog{
     content: string,
     visibility: string,
     likesCount:number,
+    commentsCount:number,
     createdAt: Date,
     updatedAt: Date,
 }

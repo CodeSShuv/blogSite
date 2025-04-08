@@ -1,18 +1,27 @@
 @import url("../../App.css");
 .customCardDesign{
     /* background-color: var(--extraStuffColor); */
-    outline: .5px solid gainsboro;
+    outline: .5px solid white;
+    width: 60rem;
+    border-left: none;
+    border-right: none;
+    padding-top: 2rem;
+    padding-bottom:2rem ;
 }
 .card-header{
-    background-color: var(--primaryColor);
+    /* background-color: var(--primaryColor); */
     /* color: var(--secondaryColor); */
+    background-color: transparent;
+    border-bottom: none;
+    
 }
 .card-body{
-    background-color: var(--secondaryDark);
+    /* background-color: var(--secondaryDark); */
     color: black;
 }
 .card-title{
-    font-size: 2rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     /* color: rgb(72, 16, 16); */
 }
 .card-title a{
@@ -23,17 +32,15 @@
     /* background-color: red; */
     display: inline-block;
 }
-.likesCount{
-    color: gainsboro;
+.likesCount, .commentCount{
+    color: var(--secondaryColor);
 }
-.commentCount{
-    color: gainsboro;
-} 
+
 .postFooter{
     display: flex;
     gap: 1rem;
     padding: 0 .4rem 0 .4rem;
-    background-color: var(--secondaryColor);
+    /* background-color: var(--secondaryColor); */
 }
 .right button {
     margin-left: 1rem;

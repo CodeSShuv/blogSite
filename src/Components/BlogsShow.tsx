@@ -47,6 +47,7 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
         res.data.blogs?.reverse()
         
         setBlogs(res.data.blogs)
+        console.log(res.data.blogs)
 
       } catch (err) {
         console.log(err)
@@ -82,7 +83,7 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
       {blogs.length != 0 ? blogs.map((element) => {
         if (element.title === "" || element.content === "") return
-        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog}  />
+        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog} commentsCount={element.commentsCount}  />
       }) : <>
        <p>No Blogs yet..</p>
       </>}
@@ -90,7 +91,7 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
 {blogs.length != 0 ? blogs.map((element) => {
   if (element.title === "" || element.content === "") return
-  return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog} likesCount = {element.likesCount}  />
+  return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog} likesCount = {element.likesCount} commentsCount={element.commentsCount}  />
 }) : <>
  <p>No Blogs yet..</p>
 </>}

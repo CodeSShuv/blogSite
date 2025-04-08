@@ -8,7 +8,7 @@ const Profile:React.FC = () => {
   return (
     <>
     <div className='ProfileInfo'>
-        <p >Personal  Information</p>
+       
         <div className="infoContainer">
             <div className="fullName">
                  {user?.firstName+ " "+ user
@@ -17,6 +17,9 @@ const Profile:React.FC = () => {
             <div className="emailContainer">
                 {user?.email}
             </div>
+            <p className='bio'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, eaque! 
+            </p>
         </div>
         <hr />
     </div>

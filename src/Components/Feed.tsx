@@ -41,7 +41,7 @@ const Feed = ({publicFeed}:{publicFeed:boolean}) => {
 
 {blogs.length != 0 ? blogs.map((element, index) => {
   if (element.title === "" || element.content === "") return
-  return <Card publicFeed={publicFeed} key={element._id} id={element._id} title={element.title} content={element.content}   userName ={element?.userId?.firstName?.charAt(0).toUpperCase() + element?.userId?.firstName?.slice(1) +' '  +element?.userId?.lastName?.charAt(0).toUpperCase() + element?.userId?.lastName?.slice(1)} likesCount={element.likesCount}/>
+  return <Card publicFeed={publicFeed} key={element._id} id={element._id} title={element.title} content={element.content}   userName ={element?.userId?.firstName?.charAt(0).toUpperCase() + element?.userId?.firstName?.slice(1) +' '  +element?.userId?.lastName?.charAt(0).toUpperCase() + element?.userId?.lastName?.slice(1)} likesCount={element.likesCount} commentsCount={element?.commentsCount}/>
 }) : <>
   <p>no blogs....... :(</p>
 </>}
