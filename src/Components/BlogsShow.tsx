@@ -90,7 +90,7 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
 {blogs.length != 0 ? blogs.map((element) => {
   if (element.title === "" || element.content === "") return
-  return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog}  />
+  return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog} likesCount = {element.likesCount}  />
 }) : <>
  <p>No Blogs yet..</p>
 </>}
