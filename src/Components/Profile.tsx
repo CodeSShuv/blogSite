@@ -11,8 +11,7 @@ const Profile:React.FC = () => {
        
         <div className="infoContainer">
             <div className="fullName">
-                 {user?.firstName+ " "+ user
-                 ?.lastName}
+                 {user?.firstName[0]?.toUpperCase()+user?.firstName?.slice(1)+ " "+ user?.lastName[0]?.toUpperCase()+user?.lastName?.slice(1)}
             </div>
             <div className="emailContainer">
                 {user?.email}

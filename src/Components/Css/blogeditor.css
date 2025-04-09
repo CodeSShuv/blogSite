@@ -1,7 +1,7 @@
 @import url("../../App.css");
 .blogEditor{
     display: flex;
-    background-color: var(--primaryColor)   ;
+    background-color: white  ;
     justify-content: center;
     align-items: center;
     flex-flow: column;
@@ -13,7 +13,7 @@ select{
     padding: .7rem
 }
 option{
-    background-color: var(--secondaryColor);
+    background-color: var(--extraColor);
     color : black
 }
 #inputTitle{
@@ -27,5 +27,7 @@ option{
     color: black;
 }
 #publish-btn{
-    background-color: var(--secondaryColor);
+    outline-color: var(--primaryColor) !important;
+    border: 1px solid var(--primaryColor);
+    background-color: var(--linkColor);
 }

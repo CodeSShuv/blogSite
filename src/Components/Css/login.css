@@ -1,18 +1,22 @@
 @import url("../../App.css");
 
 .Login{
+    /* position: relative; */
     height: 90vh;
     display: flex;
-
+    /* background-color: var(--primaryColor); */
     justify-content: center;
     align-items: center ;
+
 }
 .login-card h2{
-    /* color: var(--secondaryColor); */
-    color: black;
+    color: var(--secondaryColor);
+    /* color: white; */
 }
 .login-card{
-    background-color: var(--extraColor);
+    position: relative;
+    background-color: var(--primaryColor);
+    /* background-color: white; */
     padding: 2rem;
     display: flex;
     justify-content: center;
@@ -21,41 +25,81 @@
     gap: 2rem;
     /* box-shadow: 1px 1px 10px 15px rgba(144, 144, 144, 0.092); */
     /* border: 1px solid  rgba(128, 128, 128, 0.276); */
-    border-radius: 3rem;
+    /* border-radius: 3rem; */
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.login-card::before , .login-card::after{
+    content: " ";
+    position: absolute;
+    top: 0rem;
+    left: 0;
+    width: 102%;
+    height: 24.5rem;
+    background-color: var(--secondaryColor);
+    
+    z-index: -1  ;
+    transition: all .4s ease-in-out;
+}
+.login-card::after{
+    z-index: -2;
+    width: 103%;
+    height: 25rem;
+    background-color:var(--linkColor);
+
+}
+.login-card:hover::before{
+    width: 103%;
+    height: 24.7rem;
+}
+.login-card:hover::after{
+    width: 104%;
+    height: 25.1rem;
 }
 .login-card input{
     width: 25rem;
     font-size: 1.4rem;
     padding:  .5rem 1.3rem .5rem 1.3rem ;
     outline: 1px solid rgba(21, 21, 21, 0.14);
-}
-.login-card input:focus{
-    outline: none;
-}
-/* initial state of the .input-box */
-.input-box{
-    background-color: var(--extraColor);
-        
+    background-color: transparent;
 }
 
-.input-box:focus-within{
-    background-color: rgb(255, 255, 255);
+/* initial state of the .input-box */
+.input-box input{
+    color:var(--secondaryColor);
 }
-.input-box:not(:placeholder-shown){
-    background-color: white;
+.input-box{
+    /* background-color: var(--primaryColor); */
+    color:var(--secondaryColor);
+    outline: 1px solid var(--secondaryColor);  
+    transition-property: all;
+    transition-duration: .5s;  
 }
-.input-box:focus-within{
-    outline: 1px solid rgb(17, 17, 17);
+
+.input-box:has(input:-webkit-autofill) {
     transition-property: all;
     transition-duration: .5s;
+    -webkit-backgroud-color: black !important;
+    color: black;
+    outline: 5px solid var(--secondaryColor); 
+  }
+
+/* input:not(:placeholder-shown) .input-box{
+    background-color: var(--primaryColor) !important;
+} */
+.input-box:focus-within{
+    /* outline: 1px solid rgb(17, 17, 17); */
+    transition-property: all;
+    transition-duration: .5s;
+    background-color: black;
+    color: black;
+    outline: 5px solid var(--secondaryColor); 
     
 }
 .btn-holder button{
     width: 25rem;
     font-size: 1.3rem;
-    background-color: var(--secondaryColor);
-    border: 1px solid var(--secondaryColor);
+    background-color: var(--linkColor);
+    border: 1px solid var(--linkColor);
     color: white;
 }
 .btn-holder button:hover{

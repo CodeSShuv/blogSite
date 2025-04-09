@@ -2,7 +2,7 @@
 :root{
     --primaryColor: #000000;
     /* --secondaryColor : #eaf4f4; */
-    --secondaryColor:#d48166;
+    --secondaryColor:#74f0ed;
     --extraColor:#e6e2dd;
     --linkColor:#ea445a;
 
@@ -35,7 +35,7 @@ nav,.navbar{
 }
 
 .links:hover, .btn-nav:hover{
-    background-color: var(--extraColor);
+    background-color: var(--linkColor);
 
     
 }
@@ -61,11 +61,11 @@ nav,.navbar{
 #signup-btn{
     width: 6rem;
     margin-right: 2rem;
-    background-color: var(--secondaryColor);
+    background-color: var(--linkColor);
     padding-left: .4rem;
     text-align: center;
     font-size: 1.2rem;
-    outline: 1px solid var(--secondaryColor);
+    outline: 1px solid var(--linkColor);
   transition: all .2s ease-in-out;
 }
 #signup-btn:hover{

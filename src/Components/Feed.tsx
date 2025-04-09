@@ -8,7 +8,7 @@ const Feed = ({publicFeed}:{publicFeed:boolean}) => {
 
 
     const { blogs, setBlogs } = useContext<{ blogs: Blog[] | [], setBlogs: Function }>(blogContext);
-
+    
 
     const fetchBlogs = async () => {
         const res =  await axios.get("http://localhost:8080/blogs/feed", { withCredentials: true })

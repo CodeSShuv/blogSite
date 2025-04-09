@@ -34,6 +34,9 @@ const App = () => {
       const token = Cookies.get("token")
 
       if (!token) {
+        // if(location.search.length !=0){
+          // navigate('/blog/'+location.search);
+        // }
         navigate('/login');
         setIsLoading(false)
         return
@@ -53,7 +56,7 @@ const App = () => {
         );
 
         if (location.pathname === "/login") {
-          navigate("/blog-feed")
+          navigate("/feed")
 
         }
 

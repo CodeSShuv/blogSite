@@ -45,7 +45,7 @@ const Login = () => {
     <>
       <div className="Login">
       <div className="image-container">
-        <img src={image} alt="" />
+        {/* <img src={image} alt="" /> */}
       </div>
       {/* ------card design */}
         <div className="login-card">
