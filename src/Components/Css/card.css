@@ -14,6 +14,9 @@
     /* color: var(--secondaryColor); */
     background-color: transparent;
     border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     
 }
 .card-body{
@@ -42,6 +45,9 @@
     gap: 1rem;
     padding: 0 .4rem 0 .4rem;
     /* background-color: var(--secondaryColor); */
+}
+.right{
+    display: flex;
 }
 .right button {
     margin-left: 1rem;

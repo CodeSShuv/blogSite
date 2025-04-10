@@ -1,10 +1,20 @@
-import React,{useEffect, useContext} from 'react'
+import React,{useEffect, useContext, useState} from 'react'
 import userContext from '../Context/userContext'
 
 import "./Css/profile.css"
 import BlogsShow from './BlogsShow';
-const Profile:React.FC = () => {
+const Profile = () => {
   const {user, setUser} = useContext(userContext);
+  const [contentEditable, setContentEditable] = useState(false)
+  
+  const changeContentEditable = ()=>{
+    if(contentEditable){
+      setContentEditable(false);
+      
+    }else{
+      setContentEditable(true);
+    }
+  } 
   return (
     <>
     <div className='ProfileInfo'>
@@ -16,11 +26,12 @@ const Profile:React.FC = () => {
             <div className="emailContainer">
                 {user?.email}
             </div>
-            <p className='bio'>
+            <p className='bio'onDoubleClick={changeContentEditable}  contentEditable={contentEditable}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, eaque! 
             </p>
         </div>
         <hr />
+        
     </div>
     <BlogsShow key={3} publicFeed={false}/>
     </>

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import BlogContext, {Blog} from "../blogContext"
+import BlogContext from "../blogContext"
 
-const BlogState = (props: any) => {
-  const [blogs, setBlogs] = useState<Blog[] |[] >([])
+const BlogState = (props) => {
+  const [blogs, setBlogs] = useState([])
  
   return (
     <>

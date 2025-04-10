@@ -5,7 +5,7 @@ import { faHeart,faComment,faTrashCan,faPenToSquare }  from '@fortawesome/free-r
 
 
 
-const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName , editBlog,likesCount,commentsCount}: { title: string,visibility?:string, content: string, deleteBlog?:any,id:string, publicFeed:boolean, userName?:string, editBlog?:any,likesCount?:number, commentsCount:number   }) => {
+const Card = ({ title, content,visibility,  deleteBlog ,id, publicFeed, userName , editBlog,likesCount,commentsCount}) => {
 
   return (
     <>   

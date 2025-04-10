@@ -1,0 +1,10 @@
+.customFeatures{
+    position: absolute;
+  width: 100%;
+  top:-4rem;
+  transition:  all .3s  ease-in;
+}
+#fade{
+  top:4rem;
+  transition:  all .8s  ease-in;
+}

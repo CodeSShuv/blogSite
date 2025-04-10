@@ -8,7 +8,7 @@
 }
 .blog-heading{
     margin-top:1rem ;
-    text-align: center;
+    /* text-align: center; */
     padding: .5rem;
 }
 .blog-content{
@@ -59,8 +59,10 @@
     
 }
 .commetBtn{
+    width: 6rem;
     background-color: var(--linkColor);
     color: white;
+    text-align: center;
 }
 .commetBtn:hover{
     background-color: var(--linkColor);

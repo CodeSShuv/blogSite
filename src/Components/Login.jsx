@@ -1,14 +1,15 @@
 import { useContext, useState } from "react"
-import loginContext from "../Context/loginContext"
-import userContext from "../Context/userContext";
+import loginContext from "../Context/loginContext.jsx"
+import userContext from "../Context/userContext.jsx";
 import axios from "axios";
 import './Css/login.css'
-import image from "../assets/loginimage.png"
+import React from "react";
+
 const Login = () => {
   const { loginInput, setLoginInput } = useContext(loginContext);
   const { setUser } = useContext(userContext);
   const [error, setError] = useState("");
-  const typing = (e: any) => {
+  const typing = (e) => {
     switch (e.target.name) {
       case "email":
         setLoginInput({ ...loginInput, email: e.target.value });
@@ -25,7 +26,7 @@ const Login = () => {
       const res = await axios.post("http://localhost:8080/auth/login", loginInput, { withCredentials: true });
       console.log(res)
 
-      await setUser({
+       setUser({
         userId: res.data.userId,
         firstName: res.data.firstName,
         lastName: res.data.lastName,
@@ -33,7 +34,7 @@ const Login = () => {
       });
       setLoginInput({ email: "", password: "" })
 
-    } catch (error: any) {
+    } catch (error) {
 
       alert(error.message)
     }

@@ -1,13 +1,8 @@
 import { useState } from "react"
-import SignupContext from "../signupContext.tsx"
-interface SignpuInputState{
-  firstName:string,
-  lastName:string,
-  email:string,
-  password:string
-}
-const SignupState = (props: any) => {
-    const [signupInputState, setSignupInputState] = useState<SignpuInputState>({
+import SignupContext from "../signupContext.jsx"
+
+const SignupState = (props) => {
+    const [signupInputState, setSignupInputState] = useState({
         firstName:"",
         lastName:"",
         email:"",

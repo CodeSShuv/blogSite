@@ -1,14 +1,9 @@
 import  {useState} from 'react'
 import UserContext from '../userContext'
-export interface User{
-    userId:string,
-    firstName:string,
-    lastName:string,
-    email:string
-};
-const UserState = (props:any) => {
+
+const UserState = (props) => {
     
-const [user,setUser] = useState<User | null>(null);
+const [user,setUser] = useState(null);
   return (
     <>
     <UserContext.Provider value={{user,setUser}}>

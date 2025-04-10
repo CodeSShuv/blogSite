@@ -17,10 +17,17 @@ import Cookies from 'js-cookie';
 import Feed from "./Components/Feed";
 import Blog from "./Components/Blog";
 import Profile from "./Components/Profile";
+import Alert from "./Components/Alert";
+import AlertState from "./Context/States/AlertState";
+import alertContext from "./Context/alertContext";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 const App = () => {
-  const [isLoading, setIsLoading] = useState<boolean | null>(true);
+  const [isLoading, setIsLoading] = useState(true);
   const { user, setUser } = useContext(userContext);
   const { setBlogs } = useContext(blogContext);
+
+  const {  showAlert, alertColorStatus } = useContext(alertContext);
+
   const navigate = useNavigate();
   const location = useLocation();
 //for post Only. Might want to use it by maintaining a seperatefile in the future but this time its fine. 
@@ -34,9 +41,8 @@ const App = () => {
       const token = Cookies.get("token")
 
       if (!token) {
-        // if(location.search.length !=0){
-          // navigate('/blog/'+location.search);
-        // }
+        
+        
         navigate('/login');
         setIsLoading(false)
         return
@@ -56,24 +62,29 @@ const App = () => {
         );
 
         if (location.pathname === "/login") {
+          
+          
           navigate("/feed")
 
         }
 
         setIsLoading(false);
         //catching the problem
-      } catch (error: any) {
+      } catch (error) {
         if (error.status = 404) {
-          alert("User Not found");
+          // console.log(showAlert)
+          // showAlert(error.message, false)
           Cookies.remove('token');
         }
         else if (error.status === 401) {
           Cookies.remove('token'); // this is a special error that is caused by expired token. so the token is removed.
           setIsLoading(false)
+          showAlert("Expired Token:Please Login. ",false )
           navigate("/login")
         }
         setIsLoading(false)
         navigate("/login")// This is for all the other problems apart from expired token.
+        showAlert("Some error occured", false)
 
       }
 
@@ -83,7 +94,7 @@ const App = () => {
   const logOut = () => {
     setUser(null)
     setBlogs([])
-
+    showAlert("User logged out", true)
     navigate("/login")
 
     Cookies.remove('token');
@@ -97,7 +108,7 @@ const App = () => {
 
     if (user?.userId != undefined) {
       if (location.pathname === "/login" || location.pathname === "/") {
-
+        showAlert(`Welcome ${user.firstName + " " + user.lastName}`, true)
         navigate("/feed");
       }
       // fetchBlogs()
@@ -107,15 +118,17 @@ const App = () => {
 
   return (
     <>
+
       {!isLoading && <LoginState>
 
         <SignupState>
 
 
           <Navbar user={user} logOut={logOut} />
+          {alert? <Alert  status={alertColorStatus}/>:""}
           <Routes>
 
-            {user?.userId ? <><Route path="/profile" element={<Profile key={0}  />} /><Route path="/blog-editor" element={<BlogEditor />} />
+            {user?.userId ? <><Route path="/profile" element={<Profile key={0}  />} /><Route path="/blog-editor" element={<BlogEditor blogTitle={undefined} blogContent={undefined} visibility={undefined} isEditing={undefined} blogId={undefined} setIsEditing={undefined} />} />
             <Route path="/feed" element={<Feed key={1}  publicFeed = {true}/>}/></> : <>
               <Route path="/login" element={<Login  />} />
               <Route path="/Signup" element={<Signup />} />

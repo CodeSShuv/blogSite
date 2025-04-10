@@ -1,8 +1,8 @@
-import { User } from '../Context/States/UserState'
+
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareFromSquare, faCompass, faUser, faPenToSquare }  from '@fortawesome/free-solid-svg-icons'
-const Navbar = ({user,logOut}:{user:User | null, logOut:any }) => {
+const Navbar = ({user,logOut}) => {
   return (
     <>
   <nav className='flex justify-between items-center p-2 navbar'>

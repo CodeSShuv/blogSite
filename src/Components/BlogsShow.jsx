@@ -1,13 +1,13 @@
 
-import blogContext, { Blog } from '../Context/blogContext'
+import blogContext from '../Context/blogContext'
 import BlogEditor from './BlogEditor'
 import Card from './Card'
 import axios from 'axios'
 import  { useContext, useEffect,useState } from 'react'
 
-const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
+const BlogsShow = ({publicFeed}) => {
 
-  const { blogs, setBlogs } = useContext<{ blogs: Blog[] | [], setBlogs: Function }>(blogContext);
+  const { blogs, setBlogs } = useContext(blogContext);
   const [blogContent, setBlogContent] = useState({
     title:"",
     content:"",
@@ -18,8 +18,8 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
   const [isEditing, setIsEditing] = useState(false);
 
   //for editing the user's own blogs.
-  const editBlog = (title:string ,content:string,privacy:string,id:string)=>{
-    console.log(id)
+  const editBlog = (title ,content,privacy,id)=>{
+
     setBlogContent({
       title:title ,
       content:content,
@@ -56,7 +56,7 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
   }
 
-  const deleteBlog = async (id: string) => {
+  const deleteBlog = async (id) => {
     if (id != "defaultKey") {
  
       try {
@@ -83,7 +83,7 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
       {blogs.length != 0 ? blogs.map((element) => {
         if (element.title === "" || element.content === "") return
-        return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog} commentsCount={element.commentsCount}  />
+        return <Card publicFeed={publicFeed} deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility={element.visibility} editBlog={editBlog} commentsCount={element.commentsCount} userName={undefined} likesCount={undefined}  />
       }) : <>
        <p>No Blogs yet..</p>
       </>}
@@ -91,7 +91,7 @@ const BlogsShow = ({publicFeed}:{publicFeed:boolean}) => {
 
 {blogs.length != 0 ? blogs.map((element) => {
   if (element.title === "" || element.content === "") return
-  return <Card publicFeed={publicFeed}deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility= {element.visibility} editBlog = {editBlog} likesCount = {element.likesCount} commentsCount={element.commentsCount}  />
+  return <Card publicFeed={publicFeed} deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility={element.visibility} editBlog={editBlog} likesCount={element.likesCount} commentsCount={element.commentsCount} userName={undefined}  />
 }) : <>
  <p>No Blogs yet..</p>
 </>}

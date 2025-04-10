@@ -5,11 +5,11 @@ const Signup = () => {
   const {signupInputState, setSignupInputState} = useContext(signupContext)
   
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     setSignupInputState({ ...signupInputState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const  res = await axios.post("http://localhost:8080/auth/signup", signupInputState, {withCredentials:true})
     console.log(res.data) ;

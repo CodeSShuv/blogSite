@@ -1,4 +1,4 @@
 
 import {createContext} from "react"
-const signupContext = createContext<null | any>(null);
+const signupContext = createContext(null);
 export default signupContext;

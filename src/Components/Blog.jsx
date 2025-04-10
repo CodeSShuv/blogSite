@@ -8,7 +8,7 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
 import userContext from "../Context/userContext"
 import CommentCard from "./CommentCard"
 
-const Blog: React.FunctionComponent = () => {
+const Blog = () => {
     const [blog, setBlog] = useState({ blogId: null, title: null, content: null, firstName: null, lastName: null, userId:null });
     const { user } = useContext(userContext);
     const location = useLocation();
@@ -16,7 +16,7 @@ const Blog: React.FunctionComponent = () => {
     const [commentInput, setCommentInput] = useState("");
     ///This liked list store all the users that have liked a blog. This  is also used for showing the number of likes a blog has got by using its size. 
     //This can be replaced by likedCount which is also available but right now i have not done it yet.
-    const [likedList, setLikedList] = useState<any>([]);
+    const [likedList, setLikedList] = useState([]);
     const [likeCount, setLikeCount] = useState(0);
     const [commentCount, setCommentCount] = useState(0);
 
@@ -28,7 +28,7 @@ const Blog: React.FunctionComponent = () => {
         // console.log('...')
         const likeRes = await axios.get(`http://localhost:8080/like/get-list/${blog.blogId}`, { withCredentials: true });
         setLikedList(likeRes.data.likes);
-        likeRes.data.likes.map((e: any) => {
+        likeRes.data.likes.map((e) => {
 
             if (e.likedBy === user?.userId) {
                 // console.log(likeRes)
@@ -49,7 +49,7 @@ const Blog: React.FunctionComponent = () => {
         }
 
     }
-    const handelLike = async (e: any) => {
+    const handelLike = async (e) => {
         try {
             await axios.put(`http://localhost:8080/like/${blog.blogId}`, {}, { withCredentials: true });
             // console.log("Liked");
@@ -216,7 +216,7 @@ const Blog: React.FunctionComponent = () => {
             </div>
             <div className="commentShow" style={{ display: comment ? "block" : "none" }}>
                 <div className="aurthorComment viewComment">
-                {commentList.map((e: any, index: number) => {
+                {commentList.map((e, index) => {
                     // console.log(user?.userId,e.commentedBY._id);
                         if(e.commentedBY._id === blog.userId){
                         if (typeof (e.comment) == undefined) {
@@ -228,7 +228,7 @@ const Blog: React.FunctionComponent = () => {
                    }})}
                 </div>
                 <div className="loggedInUserComment viewComment">
-                {commentList.map((e: any, index: number) => {
+                {commentList.map((e, index) => {
                     // console.log(user?.userId,e.commentedBY._id);
                         if(e.commentedBY._id === user?.userId){
                         if (typeof (e.comment) == undefined) {
@@ -241,7 +241,7 @@ const Blog: React.FunctionComponent = () => {
                    }})}
                 </div>
                 <div className="viewComment">
-                    {commentList.map((e: any, index: number) => {
+                    {commentList.map((e, index) => {
                         if(e.commentedBY._id !== user?.userId){
                             
                         if (typeof (e.comment) == undefined) {
@@ -258,7 +258,7 @@ const Blog: React.FunctionComponent = () => {
 
                 </div>
                 <div className="commentInputBox">
-                    <textarea name="" value={commentInput} onChange={(e: any) => {
+                    <textarea name="" value={commentInput} onChange={(e) => {
                         setCommentInput(e.target.value);
                         // console.log(e.target.value)
                     }} id="" placeholder="Add a comment"></textarea>

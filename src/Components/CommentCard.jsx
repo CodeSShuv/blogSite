@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Css/commentCard.css"
-const CommentCard = ({comment, firstName, lastName}:{comment:string, firstName:string, lastName:string}) => {
+const CommentCard = ({comment, firstName, lastName}) => {
  
   return (
     <div>
