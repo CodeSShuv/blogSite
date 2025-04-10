@@ -74,7 +74,8 @@ const BlogEditor = ({ blogTitle, blogContent, visibility, isEditing, blogId, set
 
   const changeTitleContent = (e) => {
     if (e.target.innerText === "") {
-      setTitle('');
+     
+      setTitle("");
     }
     const value = e.target.innerText;
 
@@ -83,7 +84,7 @@ const BlogEditor = ({ blogTitle, blogContent, visibility, isEditing, blogId, set
   }
   const changeParagraphContent = (e) => {
     if (e.target.innerText === "") {
-      setContent('');
+      setContent("");
     }
     const value = e.target.innerText;
 
@@ -98,7 +99,9 @@ const BlogEditor = ({ blogTitle, blogContent, visibility, isEditing, blogId, set
 
   return (
     <div className="blogEditor">
-      <h2 autoFocus className="text-2xl font-bold mb-2 mt-4">{isEditing ? "Update a Blog Post" : "Create a Blog Post"}</h2>
+      <div className="top">
+
+      
       <div className="selections">
 
       <select name="visibility" onChange={(e)=>{
@@ -110,6 +113,11 @@ const BlogEditor = ({ blogTitle, blogContent, visibility, isEditing, blogId, set
         
       </select>
       </div>
+      <div className="btn-holder">
+
+<button onClick={handleSubmit} className="btn btn-publish">Publish</button>
+</div>
+        </div>
       <Title
         changeTitleContent={changeTitleContent}
         titleContent={title}
@@ -118,8 +126,7 @@ const BlogEditor = ({ blogTitle, blogContent, visibility, isEditing, blogId, set
         changeParagraphContent={changeParagraphContent}
         paragraphContent={content}
       />
-      
-      <button onClick={handleSubmit} className="btn btn-publish">Publish</button>
+     
     </div>
   );
 };

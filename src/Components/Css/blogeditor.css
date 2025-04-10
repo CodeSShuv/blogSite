@@ -1,4 +1,7 @@
 @import url("../../App.css");
+p{
+    font-family: 'Times New Roman', Times, serif;
+}
 .blogEditor{
     display: flex;
     background-color: white  ;
@@ -14,33 +17,38 @@
     /* background-color: red; */
     font-size: 3rem;
     font-weight: 600;
-    
+    font-family: 'Times New Roman';
 }
 .title:focus{
     outline: none;
     color: black;
+    font-family: 'Times New Roman';
 }
 .title:empty::before{
     content: attr(data-placeholder);
     color: gainsboro;
+    font-family: 'Times New Roman';
 }
 .paragraph{
     padding: 1rem;
     font-size: 1.7rem;
     width: 100%;
-    min-height: 20rem;
+    min-height: 10rem;
+    font-family: 'Times New Roman';
 }
 .paragraph:focus{
     outline: none;
     color: black;
+    font-family: 'Times New Roman';
 }
 .paragraph:empty::before{
     content: attr(data-placeholder);
     color: gainsboro;
+    font-family: 'Times New Roman';
 }
 .btn{
     background-color:var(--linkColor);
-    width: 100%;
+    width: 1rem;
     color: white;
 }
 .btn-publish:hover{
@@ -65,4 +73,11 @@
     width: 100%;
     /* display: flex; */
     /* justify-content: flex-start; */
+    display: inline-block;
+}
+.top{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }

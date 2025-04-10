@@ -79,7 +79,7 @@ const BlogsShow = ({publicFeed}) => {
   return (
     <>
    {isEditing? <BlogEditor blogTitle={blogContent.title}blogContent={blogContent.content}visibility = {blogContent.privacy} isEditing = {isEditing} blogId={blogContent.blogId} setIsEditing = {setIsEditing}/>:<></>}
-   {publicFeed? <div style={style.blogsCards} className= "blogsCardContainer">
+   {/* {publicFeed? 
 
       {blogs.length != 0 ? blogs.map((element) => {
         if (element.title === "" || element.content === "") return
@@ -87,18 +87,19 @@ const BlogsShow = ({publicFeed}) => {
       }) : <>
        <p>No Blogs yet..</p>
       </>}
-    </div>:(!isEditing?<div style={style.blogsCards} className= "blogsCardContainer">
-
+    </div>:(!isEditing?<div style={style.blogsCards} className= "blogsCardContainer"> */}
+<div style={style.blogsCards} className= "blogsCardContainer">
 {blogs.length != 0 ? blogs.map((element) => {
   if (element.title === "" || element.content === "") return
   return <Card publicFeed={publicFeed} deleteBlog={deleteBlog} key={element._id} id={element._id} title={element.title} content={element.content} visibility={element.visibility} editBlog={editBlog} likesCount={element.likesCount} commentsCount={element.commentsCount} userName={undefined}  />
 }) : <>
  <p>No Blogs yet..</p>
 </>}
-</div>:"")  }
-      </>
-  )
+</div>  
+      
+ </> )
 }
+
 
 export default BlogsShow
 

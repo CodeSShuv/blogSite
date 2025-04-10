@@ -9,6 +9,7 @@
 .blog-heading{
     margin-top:1rem ;
     /* text-align: center; */
+    font-family: "Times New Roman";
     padding: .5rem;
 }
 .blog-content{
@@ -76,4 +77,9 @@
    
     padding: 1rem;
     transition: all .2s ease-in-out;
+}
+.btn-holder{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
